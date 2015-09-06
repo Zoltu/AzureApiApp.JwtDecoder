@@ -9,8 +9,8 @@ namespace Zoltu.RepoCreator.Controllers
 	public class JwtDecoderController : ApiController
 	{
 		[HttpGet]
-		[Route("api/JwtDecoder")]
-		public String Get(String jwtTokenOrAuthorizationHeader, String base64EncodedSecret, String validAudience, String validIssuer)
+		[Route("api/Decode")]
+		public String Decode(String jwtTokenOrAuthorizationHeader, String base64EncodedSecret, String validAudience, String validIssuer)
 		{
 			Contract.Requires(jwtTokenOrAuthorizationHeader != null);
 			Contract.Requires(base64EncodedSecret != null);
