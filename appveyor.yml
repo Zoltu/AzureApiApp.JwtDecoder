@@ -21,7 +21,7 @@ before_build:
   - cmd: nuget restore
 
 build:
-  project: Zoltu.RepoCreator.JwtDecoder.sln
+  project: Zoltu.AzureApiApp.JwtDecoder.sln
   verbosity: minimal
   publish_wap: true
 

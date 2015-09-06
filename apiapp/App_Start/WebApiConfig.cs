@@ -2,7 +2,7 @@
 using System.Web.Http;
 using Swashbuckle.Application;
 
-namespace Zoltu.RepoCreator
+namespace Zoltu.AzureApiApp
 {
 	public static class WebApiConfig
 	{

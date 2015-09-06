@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens;
 using System.ServiceModel.Security.Tokens;
 using System.Web.Http;
 
-namespace Zoltu.RepoCreator.Controllers
+namespace Zoltu.AzureApiApp.Controllers
 {
 	public class JwtDecoderController : ApiController
 	{
