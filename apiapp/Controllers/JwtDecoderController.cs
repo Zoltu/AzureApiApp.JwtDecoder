@@ -56,6 +56,5 @@ namespace Zoltu.AzureApiApp.Controllers
 			SecurityToken securityToken;
 			new JwtSecurityTokenHandler().ValidateToken(encodedJwt, tokenValidationParameters, out securityToken);
 		}
-
 	}
 }
