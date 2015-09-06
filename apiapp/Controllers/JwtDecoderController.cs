@@ -19,7 +19,7 @@ namespace Zoltu.RepoCreator.Controllers
 			var jwtEncodedString = GetJwtTokenFromPossiblyHeader(jwtTokenOrAuthorizationHeader);
 			ValidateJwtWithHs256(jwtEncodedString, base64EncodedSecret, validAudience, validIssuer);
 
-			var payload = new JwtSecurityToken(jwtEncodedString).RawPayload;
+			var payload = new JwtSecurityToken(jwtEncodedString).Payload.SerializeToJson();
 			Contract.Assume(payload != null);
 			return payload;
 		}
@@ -29,10 +29,10 @@ namespace Zoltu.RepoCreator.Controllers
 			Contract.Requires(jwtTokenOrAuthorizationHeader != null);
 			Contract.Ensures(Contract.Result<String>() != null);
 
-			if (!jwtTokenOrAuthorizationHeader.StartsWith("bearer "))
+			if (!jwtTokenOrAuthorizationHeader.StartsWith("Bearer ", StringComparison.InvariantCultureIgnoreCase))
 				return jwtTokenOrAuthorizationHeader;
 
-			return jwtTokenOrAuthorizationHeader.Substring("bearer ".Length);
+			return jwtTokenOrAuthorizationHeader.Substring("Bearer ".Length);
 		}
 
 		private static void ValidateJwtWithHs256(String encodedJwt, String base64EncodedSecret, String validAudience, String validIssuer)
