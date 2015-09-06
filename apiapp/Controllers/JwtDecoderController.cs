@@ -19,9 +19,11 @@ namespace Zoltu.RepoCreator.Controllers
 			var jwtEncodedString = GetJwtTokenFromPossiblyHeader(jwtTokenOrAuthorizationHeader);
 			ValidateJwtWithHs256(jwtEncodedString, base64EncodedSecret, validAudience, validIssuer);
 
-			var payload = new JwtSecurityToken(jwtEncodedString).Payload.SerializeToJson();
+			var payload = new JwtSecurityToken(jwtEncodedString).Payload;
 			Contract.Assume(payload != null);
-			return payload;
+			var payloadJson = payload.SerializeToJson();
+			Contract.Assume(payloadJson != null);
+			return payloadJson;
 		}
 
 		private static String GetJwtTokenFromPossiblyHeader(String jwtTokenOrAuthorizationHeader)
